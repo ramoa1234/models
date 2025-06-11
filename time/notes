@@ -2,3 +2,14 @@
 time sequence modeling
 -make something simple to learn about time sequences 
 -try to make an algorithm or model
+
+reinforcement learning?
+make a measurement of all the previous price modeling and changes?(mean, average raise or drop)
+Make prediction
+-mmodel?
+fine tune(regression model)
+
+
+coinbase api(websocket/ monitor price at fixed rate)
+RL model
+sharpe ratio(https://en.wikipedia.org/wiki/Sharpe_ratio)
