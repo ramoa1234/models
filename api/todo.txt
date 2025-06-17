@@ -1,0 +1,6 @@
+
+get API key and add to env variables
+
+test and update the web socket connection
+
+start working on the model

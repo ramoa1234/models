@@ -1,0 +1,22 @@
+
+
+
+
+pytorch
+requires an understand of how the functions in the model work and how to tweak them and train
+
+
+STRUCTURE
+create a random forest model uses a linaer model 
+
+
+
+
+
+structure explination
+creates a random forest model that works by taking in random times and creating trees for them to properly make measurements without randomness
+Using some linear model to create the tress
+
+random forest tree works by creating ranges of data?(if vol this much and prev price was this much to make tree that can be used to predict)
+
+linear 

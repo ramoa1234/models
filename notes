@@ -1,0 +1,59 @@
+
+time sequence modeling
+-make something simple to learn about time sequences 
+-try to make an algorithm or model
+
+reinforcement learning?
+make a measurement of all the previous price modeling and changes?(mean, average raise or drop)
+Make prediction
+-mmodel?
+fine tune(regression model)
+
+
+coinbase api(websocket/ monitor price at fixed rate)
+RL model
+sharpe ratio(https://en.wikipedia.org/wiki/Sharpe_ratio)
+
+DATASET 
+https://www.kaggle.com/datasets/mczielinski/bitcoin-historical-data
+
+
+MEAN REVERSION
+META LAYERING
+
+correlation coefficent how related the variables are
+between 1 high, and -1.
+zero means there is no correlation 
+covariance which is used in it measure how much they move in the same direction
+can be done in batches
+
+for each variable in a row
+measure the covariance between the value estimated value and teh return 
+
+CHECK CORRELATION BETWEEN EACH OF THE FACTORS TO ENSURE THEY ARE ZERO
+indicating that the changes in the factors and results are random and there is no pattern
+you can measure between them
+
+REGRESSION = how much a change in one value affects another
+regression procedures
+
+get correlation between 
+factor and residual want them to be 0
+
+cov
+take previous residual
+and 
+factor
+divide by the multiplcation of there std div
+
+measure correlation between 5 values
+if you measure two close you no data you cannot measure a patter in 3 changes needs to be more
+
+set intervals for correlation. Find a patter in each bach
+correlation is done in matrices
+linear regeression is just trying to find linear patters in a in matrices or times
+
+for each row
+    index / 5 % 2
+        curr array - 5
+        get corr of those values

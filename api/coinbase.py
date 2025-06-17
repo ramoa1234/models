@@ -1,4 +1,4 @@
-import requests, asyncio, websockets 
+import requests, websockets, time
 
 
 def create_headers():
@@ -6,6 +6,8 @@ def create_headers():
         'Content-Type': 'application/json',
         'Accept': 'application/json'
     }
+
+
 
 
 url = 'api.cdp.coinbase.com'
@@ -43,12 +45,17 @@ class coinbase_api:
        pass
 
 
-class btc_listener:
+from util import load_api_key
 
-    def __init__(self, is_running):
+class btc_listener:
+    #NEED TO UPDATE SO THAT WHEN THE FUCNTION IS CALLED THE OBJECT IS RETURNED
+    async def __init__(self):
         self.ws_url = 'wss://ws-feed.exchange.coinbase.com'
-        self.is_running = is_running
-        self.running(self)
+        self.api_key = load_api_key()
+        self.running = True
+        while self.running:
+            await self.run()
+            time.sleep(5)
 
     def create_subscription_message():
         return {
@@ -63,16 +70,14 @@ class btc_listener:
                 }
             ]
         }
+        
+    async def run(self):
+        async with websockets.connect(self.ws_url) as connection:
+            await connection.send(self.create_subscription_message())
+            response = await websockets.recv()
+            json = json.loads(response)
+            print(json)
 
-    async def listener(self):
-        async with websockets.connection(self.ws_url) as websocket:
-            message = self.create_subscription_message()
-            websocket.send(message)
-            response = websocket.recv
-            yield response
-        
-    async def running(self):
-        while self.is_running == True:
-            async for message in self.listener():
-                yield message 
-        
+
+
+

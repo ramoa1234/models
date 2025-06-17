@@ -1,4 +1,4 @@
-import datetime,csv
+import datetime, csv, json
 
 path = 'data/btcusd_1-min_data.csv'
 
@@ -21,7 +21,10 @@ def check_5_min(count):
        return True
     else:
        return False
+    
 
-
-
+def load_api_key():
+   with open("env.json", "r") as file:
+      data = json.load(file)
+      api_key = data["api_key"]
 
