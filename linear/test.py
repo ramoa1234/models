@@ -1,7 +1,21 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 
+#update to not store the result current residual somewre class :)
+def correlation_matrix(data, expected, batch_size):
+    curr = np.empty((5, 5), dtype=float)
+    for row in data:
+        curr = np.vstack([curr, row])
+        if (len(curr) == batch_size):
+            corr = np.corrcoef(curr, rowvar=False)
+            curr = np.empty((5, 5), dtype=float)
 
+
+data = [[]]
+expected = 20
+batch_size = 5
+correlation_matrix(data, expected, batch_size)
 
 class linear_equation():
     def __init__(self, factor_len): 
@@ -37,6 +51,14 @@ class linear_equation():
             print(self.expected)
         else:
             self.residual = value 
+    
+    def get_correlation(self):
+        #corr = residual & factor want to equal zero
+        #&corr = residual & current residual measured(measures accuracy) also want to equal zero
+        #done iteratively in correlation matrix in training
+        #because bi1 = factor exposure measured by the correlation
+        #and by adjusting and properly setting the exposure(bi1) you can make the residual zero or close to it
+        pass
 
 #takes in each individual layer or batch as a list than computes using there object
 
@@ -61,4 +83,3 @@ def run(data):
         temp.measure_residual()
         temp.clear_batch()
             
-run(test_example_values)
