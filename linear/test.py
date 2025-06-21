@@ -8,7 +8,9 @@ class linear_equation():
         self.len = factor_len
         self.curr_batch = []
         self.expected = 0
-        self.prev_batch = [0, 0, 0, 0, 0] # saved by index samea as curr
+        self.prev_batch = []
+        for i in range(5):
+            self.prev_batch.append(5)
         self.prev_expected = 0
         self.curr_factors_value = 0
         self.residual = None
@@ -16,14 +18,14 @@ class linear_equation():
     def clear_batch(self):
         self.prev_batch = self.curr_batch
         print(f'this is the test batch{self.curr_batch}')
+        print(self.prev_batch)
         self.curr_batch.clear()
         
     def update_curr_factor_values(self):
-        print(self.curr_batch)
-        temp = self.curr_batch[0]
+        print(self.prev_batch)
         for i in range(len(self.curr_batch)):
-            print(f"this is test value{self.prev_batch}")
             self.curr_factors_value =  (self.curr_batch[i] * self.prev_batch[i]) +  self.curr_factors_value
+        print(self.curr_factors_value)
 
     def measure_residual(self):
         self.residual = self.expected - self.curr_batch[3]
@@ -52,15 +54,11 @@ def run(data):
     LEN = 5
     temp = linear_equation(LEN)
     for i in range(0, len(data)):
-        print('iteration ran')
-        #needs prev append in an object
-        if len(temp.curr_batch) > 0:
-            temp.curr_batch.append(data[i])
-        else:
-            temp.curr_batch = [data[i]]
-        if i* 5 % 2 == 0:
-            temp.update_curr_factor_values()
-            temp.measure_residual()
-            temp.clear_batch()
+        print(f'curr value in first loop {data[i]}')
+        temp.curr_batch = data[i]
+        print(temp.curr_batch)
+        temp.update_curr_factor_values()
+        temp.measure_residual()
+        temp.clear_batch()
             
 run(test_example_values)
